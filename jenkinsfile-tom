@@ -1,0 +1,10 @@
+node {
+    stage('Assembled'){
+        echo "valodation of code is performed"
+    }
+}
+node {
+    stage('copmpile'){
+        echo "testing  is done"
+    }
+}
