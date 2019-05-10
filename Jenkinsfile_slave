@@ -1,9 +1,9 @@
-node ('Slave'){
+node ('slave_1'){
     stage('Assembled'){
         echo "valodation of code is performed"
     }
 }
-node ('Slave') {
+node ('slave_1') {
     stage('copmpile'){
         echo "testing  is done"
     }
