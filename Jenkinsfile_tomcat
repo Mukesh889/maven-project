@@ -4,14 +4,14 @@ pipeline {
 
     stages {
         stage('SCM Checkout'){
-          git 'https://github.com/Mukesh889/maven-project.git'
+          git 'https://github.com/Mukesh889/maven-project'
         }
   }
     {
         stage ('Compile Stage') {
 
             steps {
-                withMaven(maven : 'Test_maven') {
+                withMaven(maven : 'LocalMaven') {
                     sh 'mvn clean compile'
                 }
             }
@@ -20,7 +20,7 @@ pipeline {
         stage ('Testing Stage') {
 
             steps {
-                withMaven(maven : 'Test_maven') {
+                withMaven(maven : 'LocalMaven') {
                     sh 'mvn test'
                 }
             }
@@ -29,20 +29,18 @@ pipeline {
 
         stage ('install Stage') {
             steps {
-                withMaven(maven : 'Test_maven') {
+                withMaven(maven : 'LocalMaven') {
                     sh 'mvn install'
                 }
             }
         }
 
-         
-       stage ('deploy to tomcat') {
-           steps {
-                sshagent(['b983303e-a522-4458-a291-31aa9a7462d5']) {
-                sh 'ssh -o StrictHostKeyChecking=no */target/*.war ec2-user@172.31.17.169::/var/lib/tomcat/webapps/'
-
-                    }
-              }
-          }
-     }
+        stage ('deploy to tomcat') {
+             steps {
+                 sshagent(['b983303e-a522-4458-a291-31aa9a7462d5']) {
+                 sh 'scp -o StrictHostKeyChecking=no */target/*.war ec2-user@172.31.17.169:/var/lib/tomcat/webapps/'
+      } 
+}
+}
+    }
 }
