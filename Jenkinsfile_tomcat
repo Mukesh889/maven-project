@@ -1,7 +1,14 @@
 pipeline{
-   agent{
+   agent any
           stages {
-                  stage('build')
+                  stage('SCM Checkout')
+                   {git 'https://github.com/Mukesh889/maven-project.git' }
+                  stage ('Installing the code')
+                      {
+                        steps{
+                            withMaven(maven: 'LocalMaven')
+                              { sh 'mvn install'}
+                         }
+                       }
                   }
-                  }
-                  }
+               }
