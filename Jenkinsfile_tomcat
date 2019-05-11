@@ -1,4 +1,4 @@
-Pileline{
+Pipeline{
    any agent{
           stages {
                   stage('SCM Checkout')
