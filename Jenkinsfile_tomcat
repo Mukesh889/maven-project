@@ -1,11 +1,11 @@
 Pileline{
    any agent{
-          Stages {
-                  Stage('SCM Checkout')
+          stages {
+                  stage('SCM Checkout')
                    {git 'https://github.com/Mukesh889/maven-project.git' }
-                  Stage ('Installing the code')
+                  stage ('Installing the code')
                       {
-                        Steps{
+                        steps{
                             withMaven(maven: 'Test_maven')
                               { sh 'mvn install'}
                          }
