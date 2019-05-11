@@ -1,15 +1,7 @@
 pipeline{
    agent{
           stages {
-                  stage('SCM Checkout')
-                   {git 'https://github.com/Mukesh889/maven-project.git' }
-                  stage ('Installing the code')
-                      {
-                        steps{
-                            withMaven(maven: 'Test_maven')
-                              { sh 'mvn install'}
-                         }
-                       }
+                  stage('build')
                   }
-               }
-          }
+                  }
+                  }
