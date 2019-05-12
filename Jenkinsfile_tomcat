@@ -7,7 +7,7 @@ git 'https://github.com/Mukesh889/maven-project'
 }
 } 
 stage('Packaging with sonar'){
-stpes{
+steps{
 withSonarQubeEnv('sonar'){
 sh 'mvn sonar:sonar clean package'
 }
