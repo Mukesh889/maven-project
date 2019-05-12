@@ -7,10 +7,11 @@ pipeline {
           git 'https://github.com/Mukesh889/maven-project'
         }
   
-   stage('Packaging with sonar')
+   stage('Packaging with sonar'){
    stpes{
      withSonarQubeEnv('sonar-pipeline'){
      sh 'mvn sonar:sonar clean package'
+     }
      }
     }
    }
