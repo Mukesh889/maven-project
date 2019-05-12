@@ -1,18 +1,17 @@
 pipeline {
-    agent any
-    stages {
-        stage('SCM Checkout'){
-        steps{
-          git 'https://github.com/Mukesh889/maven-project'
-        }
-        }
- 
-   stage('Packaging with sonar'){
-   stpes{
-     withSonarQubeEnv('sonar-pipeline'){
-     sh 'mvn sonar:sonar clean package'
-     }
-     }
-    }
-   }
+agent any
+stages {
+stage('SCM Checkout'){
+steps{
+git 'https://github.com/Mukesh889/maven-project'
+}
+} 
+stage('Packaging with sonar'){
+stpes{
+withSonarQubeEnv('sonar'){
+sh 'mvn sonar:sonar clean package'
+}
+}
+}
+}
 }
