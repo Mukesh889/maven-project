@@ -3,7 +3,7 @@ agent any
 stages {
 stage('SCM Checkout'){
 steps{
-git 
+git 'https://github.com/Mukesh889/maven-project.git'
 }
 }
 stage('Packaging with sonar'){
