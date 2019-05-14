@@ -1,0 +1,17 @@
+pipeline {
+agent any
+stages {
+stage('SCM Checkout'){
+steps{
+git 
+}
+}
+stage('Packaging with sonar'){
+steps{
+withSonarQubeEnv('newsonarjob'){
+sh 'mvn soanr:sonar clean package'
+}
+}
+}
+}
+}
